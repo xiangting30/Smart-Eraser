@@ -133,5 +133,7 @@ def remove():
 
 # 【关键】下面这部分必须存在且在最底部
 if __name__ == '__main__':
-    print("程序正在启动，请稍后...")
-    app.run(debug=True, port=5000)\
+    import os
+    # 这一步是让 Render 自动分配端口
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
